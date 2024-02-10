@@ -40,8 +40,7 @@ class App(customtkinter.CTk):
         self.label_3.grid(row=2, column=0, padx=20, pady=10)
         
         self.txt_importe_3 = customtkinter.CTkEntry(master=self)
-        self.txt_importe_3.grid(row=2, column=1)
-       
+        self.txt_importe_3.grid(row=2, column=1) 
         self.btn_total = customtkinter.CTkButton(master=self, text="TOTAL", command=self.btn_total_on_click)
         self.btn_total.grid(row=3, pady=10, columnspan=2, sticky="nsew")
         

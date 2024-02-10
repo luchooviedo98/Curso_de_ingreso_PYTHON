@@ -40,7 +40,6 @@ class App(customtkinter.CTk):
 
     def btn_mostrar_on_click(self):
         pass
-
         
         
     
