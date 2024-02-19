@@ -6,8 +6,8 @@ import customtkinter
 
 
 '''
-nombre:
-apellido:
+nombre: Luciano
+apellido: Oviedo
 ---
 Ejercicio: while_03
 ---
@@ -29,9 +29,12 @@ class App(customtkinter.CTk):
         
     
     def btn_pedir_clave_on_click(self):
-        pass
-    
-    
+        clave = prompt("UTN", "Ingrese la clave: ")
+
+        while clave != "UTN750":
+            clave = prompt("Error", "Reingrese la clave")
+
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

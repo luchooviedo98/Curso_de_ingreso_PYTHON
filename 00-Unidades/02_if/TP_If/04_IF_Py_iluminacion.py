@@ -5,18 +5,18 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre:Luciano
+apellido:Oviedo
 ---
 TP: IF_Iluminacion
 ---
 Enunciado:
 Todas las lámparas están  al mismo precio de $800 pesos final.
-		A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 
+		A.	Si compra 6 o más lamparitas bajo consumo tiene un descuento del 50%. 
 		B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % y si es de otra marca el descuento es del 30%.
 		C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
 		D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
-		E.	Si el importe final con descuento suma más de $4000  se obtien un descuento adicional de 5%.
+		E.	Si el importe final con descuento suma más de $4000  se obtiene un descuento adicional de 5%.
 '''
 
 class App(customtkinter.CTk):
@@ -43,8 +43,38 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
+        precio = 800
+        marca = self.combobox_marca
+        cantidad_str = self.combobox_cantidad.get()
+        cantidad = int(cantidad_str)
+        descuento = 0
+        precio_sin_descuento = precio * cantidad_str
+        precio_sin_descuento = int(precio_sin_descuento)
+
+
+        if cantidad >= 6:
+            descuento = (precio_sin_descuento * 50) / 100
+        elif cantidad == 5 and marca == "ArgentinaLuz":
+            descuento = (precio_sin_descuento * 40 ) / 100
+        else:
+            descuento = (precio_sin_descuento * 30) / 100
+
+        if cantidad == 4 and marca == "ArgentinaLuz" or "FelipeLamparas":
+            descuento = (precio_sin_descuento * 25) / 100
+        else:
+            descuento = (precio_sin_descuento * 20) / 100
+
+        if cantidad == 3 and marca == "ArgentinaLuz":
+            descuento = (precio_sin_descuento * 15) / 100
+        elif marca == "FelipeLamparas": 
+            descuento == (precio_sin_descuento * 10) / 100
+        else:
+            descuento == (precio_sin_descuento * 5) / 100
+
+        subtotal == precio_sin_descuento - descuento
+
         
+
     
 if __name__ == "__main__":
     app = App()

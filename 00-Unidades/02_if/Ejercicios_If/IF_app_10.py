@@ -35,13 +35,11 @@ class App(customtkinter.CTk):
         numero = random.randint(1, 10)
         numero_str = str(numero)
         
-        if(numero >= 6):
+        if numero >= 6:
             alert(title="UTN", message="Promoción directa, la nota es: " + numero_str)
-        else:
-            if(numero == 4 and numero == 5):
+        elif numero >= 4 and numero <= 5:
                 alert(title="UTN", message="Aprobado, la nota es: " + numero_str) 
-            else:
-                if(numero <= 3):
+                if numero <= 3:
                     alert(title="UTN", message="Desaprobado, la nota es: " + numero_str)       
             
 

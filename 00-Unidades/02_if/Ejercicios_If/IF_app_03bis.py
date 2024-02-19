@@ -36,7 +36,7 @@ class App(customtkinter.CTk):
         altura = self.txt_altura.get()
         altura_float = float(altura)
 
-        if (altura_float >= 1.80):
+        if altura_float >= 1.80:
             alert(title="Altura", message="Es pivot")
 
         else :

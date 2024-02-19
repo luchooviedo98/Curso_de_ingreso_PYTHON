@@ -42,16 +42,14 @@ class App(customtkinter.CTk):
         altura = self.txt_altura.get()
         altura_float = float(altura)
 
-        if(altura_float < 160):
+        if altura_float < 160:
             alert(title="UTN", message="Base")
-        else:
-            if(altura_float >= 160 and altura_float <= 179):
+        elif altura_float >= 160 and altura_float <= 179:
                 alert(title="UTN", message="Escolta")
-            else:
-                if(altura_float >= 180 and altura_float <= 199):
+        else:
+            if altura_float >= 180 and altura_float <= 199:
                     alert(title="UTN", message="Alero")
-                else:
-                    if(altura_float >= 200):
+            elif altura_float >= 200:
                         alert(title="UTN", message="Ala-Pívot o Pívot")
         
         

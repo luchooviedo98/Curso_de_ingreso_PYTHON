@@ -6,8 +6,8 @@ import customtkinter
 
 
 '''
-nombre:
-apellido:
+nombre:Luciano
+apellido:Oviedo
 ---
 Ejercicio: Match_09
 ---
@@ -50,16 +50,49 @@ class App(customtkinter.CTk):
         destinos = ['Bariloche', 'Mar del plata', 'Cataratas', 'Cordoba']
         self.combobox_destino = customtkinter.CTkComboBox(master=self, values=destinos)
         self.combobox_destino.grid(row=3, column=0, padx=20, pady=(10, 10))
-
         
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
         
     
     def btn_informar_on_click(self):
-        pass
+        precio = float(15000)
+        estacion = self.combobox_estaciones.get()
+        destino = self.combobox_destino.get()
+
+        if estacion == "Invierno":
+            match(destino):
+                case "Bariloche":
+                    incremento = (precio * 20) / 100
+                    precio = precio + incremento
+                case "Cataratas" | "Cordoba":
+                    descuento = (precio * 10) / 100
+                    precio = precio - descuento
+                case "Mar del plata":
+                    descuento = (precio * 20) / 100
+                    precio = precio - descuento
+        elif estacion == "Verano":
+            match(destino):
+                case "Bariloche":
+                    descuento = (precio * 20) / 100
+                    precio = precio - descuento
+                case "Cataratas" | "Cordoba":
+                    incremento = (precio * 10) / 100
+                    precio = precio + incremento
+                case "Mar del plata":
+                    incremento = (precio * 20) / 100
+                    precio = precio + incremento
+        else:
+            if estacion == "Primavera" or estacion == "Otoño":
+                match(destino):
+                    case "Bariloche" | "Cataratas" | "Mar del plata":
+                        incremento = (precio * 10) / 100
+                        precio = precio + incremento
+                    case "Cordoba":
+                        pass
+
+        alert("UTN", "El precio final con descuento es de: " + str(precio))
             
-    
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
