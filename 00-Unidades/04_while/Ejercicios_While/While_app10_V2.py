@@ -44,50 +44,47 @@ class App(customtkinter.CTk):
         contador_positivos = 0
         contador_negativos = 0
         contador_ceros = 0
-        maximo = 0
         minimo = 0
+        maximo = 0
         bandera = True
 
         while True:
-            numero_ingresado = prompt("UTN","Ingrese numero")
+            numero = prompt("UTN","Ingrese numero")
 
             #prompt
-            if numero_ingresado == None:
+            if numero == None:
                 break
             
-            while numero_ingresado == "":
-                numero_ingresado = prompt("UTN","Ingrese numero")
+            while numero == "":
+                numero = prompt("UTN","Ingrese numero")
 
-            numero_ingresado = int(numero_ingresado)
+            numero = int(numero)
+            numero_ingresado = 0
 
             #contador
-            if numero_ingresado < 0:
-                acumulador_negativos += numero_ingresado
+            if numero < numero_ingresado:
+                acumulador_negativos += numero
                 contador_negativos += 1
-            elif numero_ingresado > 0: 
-                acumulador_positivos += numero_ingresado
+                minimo == numero
+            elif numero > numero_ingresado: 
+                acumulador_positivos += numero
                 contador_positivos += 1
+                maximo == numero
             else:
-                if numero_ingresado == 0:
+                if numero == 0:
                     contador_ceros += 1
             
-            if bandera == True or numero_ingresado < numero_minimo:
-                numero_minimo = numero_ingresado
-                
-            if bandera == True or numero_ingresado > numero_maximo:
-                numero_maximo = numero_ingresado
-
-            bandera = False
+        if bandera == True or numero < numero_minimo:
+            numero_minimo = numero
+            
+        elif bandera == True or numero > numero_maximo:
+            numero_maximo = numero
 
         diferencia_positivos_negativos = contador_positivos - contador_negativos
 
-        mensaje = f"acumulador negativos: {acumulador_negativos}\n acumulador positivos: {acumulador_positivos}\n contador positivos: {contador_positivos} \n contador negativos: {contador_negativos}\n contador ceros: {contador_ceros}\n diferencia entre positivos y negativos: {diferencia_positivos_negativos}\n Máximo: {numero_maximo} \n Mínimo: {numero_minimo}" 
-        
-        '''Máximo: {numero_maximo} \n Mínimo: {numero_minimo}'''
-
+        mensaje = f"acumulador negativos: {acumulador_negativos}\n acumulador positivos: {acumulador_positivos}\n contador positivos: {contador_positivos} \n contador negativos: {contador_negativos}\n contador ceros: {contador_ceros}\n diferencia entre positivos y negativos: {diferencia_positivos_negativos}\n Máximo: {numero_maximo} \n Mínimo: {numero_minimo}"
         alert("Informe", mensaje)
     
-        
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

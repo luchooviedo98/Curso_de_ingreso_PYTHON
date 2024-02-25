@@ -29,11 +29,20 @@ class App(customtkinter.CTk):
         
     
     def btn_mostrar_iteracion_on_click(self):
-        numero = 2
+        acumulador = 0
+        contador = int(1)
+        numero = int(1)
 
-        while numero > 1 and numero <= 10:
-            alert("UTN", numero)
-            numero += 2
+        while contador <= 10:
+            if numero % 2 == 0:
+                acumulador += numero
+            contador += 1
+            numero += 1
+            
+        alert("UTN", "La suma entre los numeros es: " +str(acumulador))
+        
+
+        
     
 if __name__ == "__main__":
     app = App()

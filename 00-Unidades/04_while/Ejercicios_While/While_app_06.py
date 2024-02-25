@@ -39,13 +39,15 @@ class App(customtkinter.CTk):
         contador = 0
         acumulador = 0
         
+        #durante el while
         while contador < 5:
 
             numero = prompt("Datos", "Ingrese un numero")
             numero = int(numero)
             acumulador += numero
             contador += 1
-            
+        
+        #despues del while
         promedio = acumulador / 5 
 
         self.txt_suma_acumulada.delete(0, "end")

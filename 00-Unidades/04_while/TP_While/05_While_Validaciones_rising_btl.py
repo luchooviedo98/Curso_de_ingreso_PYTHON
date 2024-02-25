@@ -41,7 +41,7 @@ class App(customtkinter.CTk):
 
         self.label2 = customtkinter.CTkLabel(master=self, text="Estado")
         self.label2.grid(row=2, column=0, padx=20, pady=10)
-        self.txt_tipo = customtkinter.CTkComboBox(master=self, values=["Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a"])
+        self.txt_tipo = customtkinter.CTkEntry(master=self)
         self.txt_tipo.grid(row=2, column=1, padx=20, pady=10)
 
         self.label3 = customtkinter.CTkLabel(master=self, text="Legajo")
@@ -54,16 +54,30 @@ class App(customtkinter.CTk):
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
     def btn_validar_on_click(self):
-        apellido = self.txt_apellido.get()
-        edad = self.txt_edad.get()
-        edad = int(edad)
-        estado = self.txt_tipo.get()
-        legajo = self.txt_legajo.get()
-        legajo = int(legajo)
+        
+        #Apellido
+        apellido = prompt("Ingreso", "Ingrese apellido")
+
+        while not apellido.isalpha():
+            apellido = prompt("Ingreso", "Reingrese apellido")
+            
+            if apellido == None:
+                break
+
+        #Edad
+        edad = prompt("Ingreso", "Ingrese edad")
+        #edad = int(edad)
+        while not edad.isdigit():    
+            edad = prompt("Ingreso", "Reingrese edad")
+
+            if edad == None:
+                break
+        
+        int(edad)
+        #Estado
+
 
         
-
-
 
 
 if __name__ == "__main__":

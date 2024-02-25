@@ -11,7 +11,7 @@ apellido:Oviedo
 TP: IF_Iluminacion
 ---
 Enunciado:
-Todas las lámparas están  al mismo precio de $800 pesos final.
+Todas las lámparas están al mismo precio de $800 pesos final.
 		A.	Si compra 6 o más lamparitas bajo consumo tiene un descuento del 50%. 
 		B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % y si es de otra marca el descuento es del 30%.
 		C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
@@ -43,38 +43,58 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        precio = 800
-        marca = self.combobox_marca
-        cantidad_str = self.combobox_cantidad.get()
-        cantidad = int(cantidad_str)
-        descuento = 0
-        precio_sin_descuento = precio * cantidad_str
-        precio_sin_descuento = int(precio_sin_descuento)
-
-
+        precio = float(800)
+        marca = self.combobox_marca.get()
+        cantidad = self.combobox_cantidad.get()
+        cantidad = int(cantidad)
+    #A
         if cantidad >= 6:
-            descuento = (precio_sin_descuento * 50) / 100
+            descuento = (precio * 50) / 100
+            precio_final = cantidad * (precio - descuento)
+            alert("UTN", "EL precio final con descuento es de: " + str(precio_final))
+    #B
         elif cantidad == 5 and marca == "ArgentinaLuz":
-            descuento = (precio_sin_descuento * 40 ) / 100
-        else:
-            descuento = (precio_sin_descuento * 30) / 100
+            descuento = (precio * 40) / 100
+            precio_final = cantidad * (precio - descuento)
+            alert("UTN", "El precio final con descuento es de: " + str(precio_final))
+    
+        elif cantidad == 5:
+                descuento = (precio * 30) / 100
+                precio_final = cantidad * (precio - descuento)
+                alert("UTN", "EL precio final con descuento es de: " + str(precio_final))
+    #C
+        elif cantidad == 4 and (marca == "ArgentinaLuz" or marca == "FelipeLamparas"):
+                descuento = (precio * 25) / 100
+                precio_final = cantidad * (precio - descuento)
+                alert("UTN", "EL precio final con descuento es de: " + str(precio_final))
+            
+        elif cantidad == 4:
+            descuento = (precio * 20) / 100
+            precio_final = cantidad * (precio - descuento)
+            alert("UTN", "EL precio final con descuento es de: " + str(precio_final))
+    #D 
+        elif cantidad == 3 and marca == "ArgentinaLuz":
+            descuento = (precio * 15) / 100
+            precio_final = cantidad * (precio - descuento)
+            alert("UTN", "EL precio final con descuento es de: " + str(precio_final))
 
-        if cantidad == 4 and marca == "ArgentinaLuz" or "FelipeLamparas":
-            descuento = (precio_sin_descuento * 25) / 100
-        else:
-            descuento = (precio_sin_descuento * 20) / 100
+        elif cantidad == 3 and marca == "FelipeLamparas":
+            descuento = (precio * 10) / 100
+            precio_final = cantidad * (precio - descuento)
+            alert("UTN", "EL precio final con descuento es de: " + str(precio_final))
 
-        if cantidad == 3 and marca == "ArgentinaLuz":
-            descuento = (precio_sin_descuento * 15) / 100
-        elif marca == "FelipeLamparas": 
-            descuento == (precio_sin_descuento * 10) / 100
-        else:
-            descuento == (precio_sin_descuento * 5) / 100
+        elif cantidad == 3:
+                descuento = (precio * 5) / 100
+                precio_final = cantidad * (precio - descuento)
+                alert("UTN", "EL precio final con descuento es de: " + str(precio_final))
 
-        subtotal == precio_sin_descuento - descuento
-
+        elif precio_final >= 4000:
+            descuento_adicional = (precio_final * 5)/100
+            precio_final_descuento_adicional = precio_final - descuento_adicional
+            alert("UTN", "EL precio final con descuento es de: " + str(precio_final_descuento_adicional))
         
-
+''' '''  
+        
     
 if __name__ == "__main__":
     app = App()
